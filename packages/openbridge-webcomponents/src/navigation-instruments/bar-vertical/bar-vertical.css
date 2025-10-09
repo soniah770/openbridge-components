@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+}
+
+.wrapper {
+  display: flex;
+  width: 104px;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.wrapper.small {
+  height: 160px;
+}
+
+.wrapper.medium {
+  height: 320px;
+}
+
+.wrapper.large {
+  height: 480px;
+}
+
+.scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--instrument-components-watchface-scale-size, 28px);
+  flex-shrink: 0;
+  align-self: stretch;
+  height: 100%;
+}
+
+.major-tick {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wrapper.left .major-tick {
+  justify-content: flex-end;
+}
+
+.wrapper.right .major-tick {
+  justify-content: flex-start;
+}
+
+.minor-tick {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.wrapper.left .minor-tick {
+  justify-content: flex-end;
+  padding-right: 4px;
+}
+
+.wrapper.right .minor-tick {
+  justify-content: flex-start;
+  padding-left: 4px;
+}
+
+.tick-label {
+  color: var(--color-instrument-tick-mark-label-secondary-color, #707070);
+  text-align: center;
+  font-feature-settings: 'ss04' on;
+  font-family: var(--global-typography-font-family, "Noto Sans");
+  font-size: var(--global-typography-instrument-tick-mark-font-size, 16px);
+  font-style: normal;
+  font-weight: var(--global-typography-instrument-tick-mark-font-weight, 370);
+  line-height: var(--global-typography-instrument-tick-mark-line-height, 24px);
+  user-select: none;
+}
+
+.tick-mark {
+  flex-shrink: 0;
+  background: var(--instrument-tick-mark-tertiary-color, #d0d3d6);
+}
+
+.tick-mark.major {
+  width: 6px;
+  height: 1px;
+}
+
+.tick-mark.minor {
+  width: 3px;
+  height: 1px;
+}
+
+.bar-container {
+  position: relative;
+  width: 14px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.background-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--instrument-frame-tertiary-color);
+  border-radius: 2px;
+}
+
+.bar {
+  position: absolute;
+  width: 100%;
+  background: var(--instrument-enhanced-secondary-color);
+  border-radius: 2px;
+  transition: opacity 0.2s ease-in-out;
+  min-height: 2px;
+}
+
+.bar:hover {
+  opacity: 0.85;
+}
