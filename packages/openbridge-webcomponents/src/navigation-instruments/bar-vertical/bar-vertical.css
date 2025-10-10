@@ -16,17 +16,10 @@
   flex-shrink: 0;
 }
 
-.wrapper.small {
-  height: 160px;
-}
+.wrapper.small { height: 160px; }
+.wrapper.medium { height: 320px; }
+.wrapper.large { height: 480px; }
 
-.wrapper.medium {
-  height: 320px;
-}
-
-.wrapper.large {
-  height: 480px;
-}
 
 .scale {
   display: flex;
@@ -38,35 +31,36 @@
   height: 100%;
 }
 
-.major-tick {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
 
-.wrapper.left .major-tick {
-  justify-content: flex-end;
-}
-
-.wrapper.right .major-tick {
-  justify-content: flex-start;
-}
-
+.major-tick,
 .minor-tick {
   display: flex;
   align-items: center;
-  flex: 1;
+}
+
+.wrapper.left .major-tick,
+.wrapper.left .minor-tick {
+  justify-content: flex-end;
 }
 
 .wrapper.left .minor-tick {
-  justify-content: flex-end;
   padding-right: 4px;
 }
 
+/* Right Alignment */
+.wrapper.right .major-tick,
 .wrapper.right .minor-tick {
   justify-content: flex-start;
+}
+
+.wrapper.right .minor-tick {
   padding-left: 4px;
 }
+
+.minor-tick {
+  flex: 1;
+}
+
 
 .tick-label {
   color: var(--color-instrument-tick-mark-label-secondary-color, #707070);
@@ -83,16 +77,17 @@
 .tick-mark {
   flex-shrink: 0;
   background: var(--instrument-tick-mark-tertiary-color, #d0d3d6);
+    height: 1px;
 }
 
 .tick-mark.major {
   width: 6px;
-  height: 1px;
+  
 }
 
 .tick-mark.minor {
   width: 3px;
-  height: 1px;
+ 
 }
 
 .bar-container {

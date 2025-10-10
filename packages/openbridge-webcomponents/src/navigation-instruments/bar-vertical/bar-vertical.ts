@@ -3,7 +3,7 @@ import {property} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
 import componentStyle from './bar-vertical.css?inline';
 import {customElement} from '../../decorator.js';
-
+import {TemplateResult} from 'lit';
 export enum BarVerticalSize {
   small = 'small',
   medium = 'medium',
@@ -66,7 +66,7 @@ export class ObcBarVertical extends LitElement {
 
   private renderScale() {
     const majorTicks = this.getMajorTicks();
-    const items = [];
+    const items : TemplateResult[] = [];
     
     majorTicks.forEach((tick, index) => {
       items.push(html`
