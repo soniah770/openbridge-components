@@ -1,15 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Lit + TS</title>
-    <script type="module" src="/src/my-element.ts"></script>
-  </head>
-  <body>
-    <my-element>
-      <h1>Vite + Lit</h1>
-    </my-element>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar Vertical Demo</title>
+</head>
+<body>
+  <h1>Bar Vertical Component Test</h1>
+  
+  <div style="padding: 20px;">
+    <obc-bar-vertical 
+      value="60" 
+      max="100" 
+      min="0"
+      hasScale="true"
+      style="width: 104px; height: 320px; display: inline-block;"
+    ></obc-bar-vertical>
+  </div>
+
+  <script type="module" src="/src/navigation-instruments/bar-vertical/bar-vertical.ts"></script>
+</body>
 </html>

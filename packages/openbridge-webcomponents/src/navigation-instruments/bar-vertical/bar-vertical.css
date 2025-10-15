@@ -4,120 +4,119 @@
 
 :host {
   display: inline-block;
-  width: fit-content;
-  height: fit-content;
+  --tick-marks-spacing: calc(var(--Watchface-Scale-Padding, 2) * 1px);
+  --scale-label-vertical-offset: -50%;
+  --wrapper-gap: 4px;
+  --scale-gap: 8px;
 }
 
+/* Main Wrapper */
 .wrapper {
   display: flex;
-  width: 104px;
   align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
+  gap: var(--wrapper-gap);
+  height: 100%;
 }
 
+/* Size Variants */
 .wrapper.small { height: 160px; }
 .wrapper.medium { height: 320px; }
 .wrapper.large { height: 480px; }
 
+/* Scale Container */
+.scale-container {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex-shrink: 0;
+  gap: var(--scale-gap);
+}
 
-.scale {
+/* Common properties for vertical flex containers */
+.scale-labels,
+.tick-marks {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: var(--instrument-components-watchface-scale-size, 28px);
-  flex-shrink: 0;
   align-self: stretch;
-  height: 100%;
+  position: relative;
+  flex-shrink: 0;
 }
 
+/* Labels Container - specific properties */
+.scale-labels {
+  justify-content: flex-end;
+  align-items: center;
+  width: var(--watchface-label-width-regular, 24px);
+}
 
-.major-tick,
-.minor-tick {
+/* Tick Marks Container - specific properties */
+.tick-marks {
+  width: var(--Watchface-Tick-marks-Primary, 24px);
+}
+
+/* Tick alignment */
+.scale-container.left .tick-marks {
+  align-items: flex-end;
+}
+
+.scale-container.right .tick-marks {
+  align-items: flex-start;
+}
+
+/* Base Tick Mark */
+.tick-mark {
+  position: absolute;
+  height: 1px;
+  background-color: var(--instrument-frame-tertiary-color, #BEBEBE);
+  transform: translateY(-50%);
+}
+
+/* Tick positioning */
+.scale-container.left .tick-mark {
+  right: 0;
+}
+
+.scale-container.right .tick-mark {
+  left: 0;
+}
+
+/* Tick Width Variants */
+.tick-mark.secondary { 
+  width: var(--Watchface-Tick-marks-Secondary, 14px); 
+}
+
+.tick-mark.main { 
+  width: var(--Watchface-Tick-marks-Primary, 24px); 
+}
+
+.tick-mark.main-special { 
+  width: var(--Watchface-Tick-marks-Main, 24px); 
+}
+
+/* Scale Label */
+.scale-label {
   display: flex;
   align-items: center;
-}
-
-.wrapper.left .major-tick,
-.wrapper.left .minor-tick {
-  justify-content: flex-end;
-}
-
-.wrapper.left .minor-tick {
-  padding-right: 4px;
-}
-
-/* Right Alignment */
-.wrapper.right .major-tick,
-.wrapper.right .minor-tick {
-  justify-content: flex-start;
-}
-
-.wrapper.right .minor-tick {
-  padding-left: 4px;
-}
-
-.minor-tick {
-  flex: 1;
-}
-
-
-.tick-label {
-  color: var(--color-instrument-tick-mark-label-secondary-color, #707070);
-  text-align: center;
-  font-feature-settings: 'ss04' on;
-  font-family: var(--global-typography-font-family, "Noto Sans");
-  font-size: var(--global-typography-instrument-tick-mark-font-size, 16px);
-  font-style: normal;
-  font-weight: var(--global-typography-instrument-tick-mark-font-weight, 370);
-  line-height: var(--global-typography-instrument-tick-mark-line-height, 24px);
-  user-select: none;
-}
-
-.tick-mark {
-  flex-shrink: 0;
-  background: var(--instrument-tick-mark-tertiary-color, #d0d3d6);
-    height: 1px;
-}
-
-.tick-mark.major {
-  width: 6px;
-  
-}
-
-.tick-mark.minor {
-  width: 3px;
- 
-}
-
-.bar-container {
-  position: relative;
-  width: 14px;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
   justify-content: center;
-  flex-shrink: 0;
+  position: absolute;
+  width: 100%;
+  padding: var(--Watchface-Label-vertical-padding, 4px) var(--Watchface-Label-horizontal-padding, 2px);
+  transform: translateY(var(--scale-label-vertical-offset));
+  user-select: none;
+  
+  color: var(--Color-Instrument-Tick-mark-label-secondary-color, #707070);
+  text-align: center;
+  font-family: var(--Global-Typography-Font-family, "Noto Sans");
+  font-size: var(--Global-Typography-Instrument-Tick-mark-Font-size, 16px);
+  font-style: normal;
+  font-weight: var(--Global-Typography-Instrument-Tick-mark-Font-weight, 370);
+  line-height: var(--Global-Typography-Instrument-Tick-mark-Line-height, 24px);
+  font-feature-settings: 'ss04' on;
 }
 
-.background-bar {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+/* Bar SVG */
+.bar-svg {
+  width: var(--bar-width, 32px);
   height: 100%;
-  background: var(--instrument-frame-tertiary-color);
-  border-radius: 2px;
-}
-
-.bar {
-  position: absolute;
-  width: 100%;
-  background: var(--instrument-enhanced-secondary-color);
-  border-radius: 2px;
-  transition: opacity 0.2s ease-in-out;
-  min-height: 2px;
-}
-
-.bar:hover {
-  opacity: 0.85;
+  flex-shrink: 0;
 }
