@@ -63,7 +63,7 @@
     "@playwright/test": "^1.53.1",
     "@storybook/addon-docs": "^9.0.18",
     "@storybook/addon-links": "^9.0.18",
-    "@storybook/addon-themes": "^9.0.18",
+    "@storybook/addon-themes": "^9.1.15",
     "@storybook/test-runner": "^0.23.0",
     "@storybook/web-components-vite": "^9.0.18",
     "@topcli/prompts": "^2.2.0",
