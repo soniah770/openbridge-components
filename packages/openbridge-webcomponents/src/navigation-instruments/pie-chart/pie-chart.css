@@ -1,0 +1,100 @@
+:host {
+  --pie-chart-border-radius: 4px;
+  --pie-chart-transition-duration: 0.2s;
+  --pie-chart-transition-timing: ease;
+  --pie-chart-hover-opacity: 0.85;
+  --pie-chart-focus-color: var(--focus-color, #4271B3);
+  --pie-chart-focus-width: 2px;
+  --pie-chart-focus-offset: 2px;
+  --pie-chart-label-color: var(--Color-Instrument-Tick-mark-label-secondary-color, #707070);
+  --pie-chart-label-font-family: var(--Global-Typography-Font-family, "Noto Sans");
+  --pie-chart-label-font-size: var(--Global-Typography-Instrument-Tick-mark-Font-size, 16px);
+  --pie-chart-label-font-weight: var(--Global-Typography-Instrument-Tick-mark-Font-weight, 370);
+  --pie-chart-label-line-height: var(--Global-Typography-Instrument-Tick-mark-Line-height, 24px);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-wrapper,
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-wrapper {
+  border-radius: var(--pie-chart-border-radius);
+  flex-shrink: 0;
+}
+
+.pie-container {
+  width: 100%;
+  height: 100%;
+}
+
+svg {
+  display: block;
+}
+
+.segment {
+  cursor: pointer;
+  transition: opacity var(--pie-chart-transition-duration) var(--pie-chart-transition-timing);
+}
+
+.segment:hover {
+  opacity: var(--pie-chart-hover-opacity);
+}
+
+.segment:focus {
+  outline: var(--pie-chart-focus-width) solid var(--pie-chart-focus-color);
+  outline-offset: var(--pie-chart-focus-offset);
+}
+
+.segment:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.label {
+  fill: var(--pie-chart-label-color);
+  font-family: var(--pie-chart-label-font-family);
+  font-size: var(--pie-chart-label-font-size);
+  font-weight: var(--pie-chart-label-font-weight);
+  line-height: var(--pie-chart-label-line-height);
+  font-feature-settings: 'ss04' on;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-contrast: high) {
+  .segment {
+    stroke-width: 2px;
+  }
+  
+  .label {
+    font-weight: 500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    transition: none;
+  }
+}
+
+@media print {
+  .segment {
+    transition: none;
+    cursor: default;
+  }
+  
+  .segment:hover {
+    opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    --pie-chart-label-color: var(--Color-Instrument-Tick-mark-label-secondary-color, #c0c0c0);
+  }
+}
