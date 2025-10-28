@@ -61,7 +61,7 @@
     "@lit-labs/gen-wrapper-vue": "file:lit-labs-gen-wrapper-vue-0.4.1.tgz",
     "@open-wc/lit-helpers": "^0.7.0",
     "@playwright/test": "^1.53.1",
-    "@storybook/addon-docs": "^9.0.18",
+    "@storybook/addon-docs": "^10.0.0",
     "@storybook/addon-links": "^9.0.18",
     "@storybook/addon-themes": "^9.0.18",
     "@storybook/test-runner": "^0.23.0",
